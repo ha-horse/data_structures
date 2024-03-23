@@ -17,7 +17,7 @@ public:
     //在线性表第i个元素后插入新元素x
     bool insert(int x, int i);
     //删除线性表的第i个元素
-    bool remove(int &x, int i);
+    bool remove(int x, int i);
     //修改线性表的第i个元素为x
     bool modify(int x, int i);
     // 获取线性表的长度

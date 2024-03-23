@@ -14,8 +14,12 @@ void printList(LinearList list){
 
 int main(){
     LinearList list(5);
-    printf("init linearList filshed!\n");
-    list.insert(10, 2);
+    list.insert(10, 3);
+    printList(list);
+    list.modify(8, 0);
+    list.modify(8, 1);
+    printList(list);
+    list.remove(8, 1);
     printList(list);
     return 0;
 }

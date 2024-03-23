@@ -3,19 +3,19 @@
 #include <algorithm>
 
 LinearList::LinearList(){
-    this->buffer = NULL;
-    this->size = 0;
-    this->capacity = 0;
+    buffer = NULL;
+    size = 0;
+    capacity = 0;
 }
 
 LinearList::LinearList(int num, int value){
-    this->size = num;
-    this->capacity = num;
-    this->buffer = new int[size];
+    size = num;
+    capacity = num;
+    buffer = new int[size];
 
-    for (int i = 0; i < this->size; i++)
+    for (int i = 0; i < size; i++)
     {
-        this->buffer[i] = value;
+        buffer[i] = value;
     }
     
 }
@@ -25,37 +25,52 @@ LinearList::~LinearList(){
 }
 
 void LinearList::expand(){
-    this->capacity *= 2;
-    int *p = new int[this->capacity];
-    std::copy(this->buffer, this->buffer + this->size, p);
-    delete []this->buffer;
-    this->buffer = p;
+    capacity *= 2;
+    int *p = new int[capacity];
+    std::copy(buffer, buffer + size, p);
+    delete []buffer;
+    buffer = p;
 }
 
 bool LinearList::insert(int x, int index){
     index--;
     if (size >= capacity) {
-            this->expand();
+            expand();
         }
 
-    for(int i = this->size - 1; i >= index; i--){
-        this->buffer[i+1] = this->buffer[i];
+    for(int i = size - 1; i >= index; i--){
+        buffer[i+1] = buffer[i];
     }
-    this->buffer[index] = x;
-    this->size ++;
+    buffer[index] = x;
+    size ++;
     return true;
 }
 
-bool LinearList::remove(int &x, int index){}
+bool LinearList::remove(int x, int index){
+    index--;
+    if (size == 0)
+    {
+        return false;
+    }
+
+    for (int  i = index; i < size; i++)
+    {
+        buffer[i] = buffer[i+1];
+    }
+    size --;
+    return true;
+    
+}
 
 bool LinearList::modify(int x, int index){
-    this->buffer[index-1] = x;
+    buffer[index] = x;
+    return true;
 }
 
 int LinearList::getLength(){
-    return this->size;
+    return size;
 }
 
 int* LinearList::getBuffer(){
-    return this->buffer;
+    return buffer;
 }
