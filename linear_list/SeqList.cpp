@@ -1,5 +1,4 @@
-#include "LinearList.h"
-#include <iostream>
+#include "SeqList.h"
 #include <algorithm>
 
 LinearList::LinearList(){
@@ -11,7 +10,7 @@ LinearList::LinearList(){
 LinearList::LinearList(int num, int value){
     size = num;
     capacity = num;
-    buffer = new int[size];
+    buffer = new int[capacity];
 
     for (int i = 0; i < size; i++)
     {
@@ -32,8 +31,7 @@ void LinearList::expand(){
     buffer = p;
 }
 
-bool LinearList::insert(int x, int index){
-    index--;
+bool LinearList::insert(const int& x, int index){
     if (size >= capacity) {
             expand();
         }
@@ -46,18 +44,19 @@ bool LinearList::insert(int x, int index){
     return true;
 }
 
-bool LinearList::remove(int x, int index){
-    index--;
+bool LinearList::remove(int x){
     if (size == 0)
     {
         return false;
     }
 
-    for (int  i = index; i < size; i++)
+    for (int  i = 0; i < size; i++)
     {
-        buffer[i] = buffer[i+1];
+        if (x == buffer[i]) {
+            buffer[i] = buffer[i+1];
+            size --;
+        }
     }
-    size --;
     return true;
     
 }
@@ -71,6 +70,10 @@ int LinearList::getLength(){
     return size;
 }
 
-int* LinearList::getBuffer(){
-    return buffer;
+void LinearList::printList(){
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << "第 " << i << " 元素为: " << buffer[i] << std::endl;
+    }
+    
 }
