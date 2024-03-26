@@ -1,5 +1,5 @@
 #include "SeqList.hpp"
-// #include "LinkList.h"
+#include "LinkList.hpp"
 #include <iostream>
 
 void testSeqList(){
@@ -28,25 +28,38 @@ void testSeqList(){
     std::cout << "----------------" << std::endl;
 }
 
-// void testLinkList(){
-//     LinkedList list;
-//     list.insert(10);
-//     list.insert(9);
-//     list.printList();
-//     std::cout << "----------------" << std::endl;
-//     list.modify(8, 0);
-//     list.modify(8, 1);
-//     list.printList();
-//     std::cout << "----------------" << std::endl;
-//     list.remove(8);
-//     list.printList();
-//     std::cout << "----------------" << std::endl;
-// }
+void testLinkList(){
+    LinkedList<int> link;
+    link.insert(10);
+    link.insert(9);
+    printList(link);
+    std::cout << "----------------" << std::endl;
+    link.modify(8, 0);
+    link.modify(8, 1);
+    printList(link);
+    std::cout << "----------------" << std::endl;
+    link.remove(8);
+    printList(link);
+    std::cout << "----------------" << std::endl;
+    std::cout << "----------------" << std::endl;
+    LinkedList<float> link_float;
+    link_float.insert(10.2);
+    link_float.insert(9.2);
+    printList(link_float);
+    std::cout << "----------------" << std::endl;
+    link_float.modify(8.1, 0);
+    link_float.modify(8.2, 1);
+    printList(link_float);
+    std::cout << "----------------" << std::endl;
+    link_float.remove(8.1);
+    printList(link_float);
+    std::cout << "----------------" << std::endl;
+}
 
 int main(){
     std::cout << "test 1:" << std::endl;
     testSeqList();
     std::cout << "test 2:" << std::endl;
-    // testLinkList();
+    testLinkList();
     return 0;
 }
