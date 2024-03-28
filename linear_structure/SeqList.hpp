@@ -11,7 +11,7 @@
 
 template <typename T>
 class LinearList{
-private:
+protected:
     /* data */
     T *buffer; // 动态数组
     int size; // 当前大小
