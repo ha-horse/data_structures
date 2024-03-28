@@ -1,6 +1,5 @@
-#include "SeqList.hpp"
 #include "LinkList.hpp"
-#include <iostream>
+#include "Stack.hpp"
 
 void testSeqList(){
     LinearList<int> list(5);
@@ -56,10 +55,38 @@ void testLinkList(){
     std::cout << "----------------" << std::endl;
 }
 
+void testStack()  {
+    Stack<int> int_stack;
+    int_stack.push(10);
+    int_stack.push(19);
+    printStack(int_stack);
+    std::cout << "----------------" << std::endl;
+    int value1 = int_stack.top();
+    std::cout << "value = " << value1 << std::endl;
+    std::cout << "----------------" << std::endl;
+    int_stack.pop();
+    printStack(int_stack);
+    std::cout << "----------------" << std::endl;
+
+    Stack<float> fload_stack;
+    fload_stack.push(10.1);
+    fload_stack.push(19.2);
+    printStack(fload_stack);
+    std::cout << "----------------" << std::endl;
+    float value2 = fload_stack.top();
+    std::cout << "value = " << value2 << std::endl;
+    std::cout << "----------------" << std::endl;
+    fload_stack.pop();
+    printStack(fload_stack);
+    std::cout << "----------------" << std::endl;
+}
+
 int main(){
-    std::cout << "test 1:" << std::endl;
-    testSeqList();
-    std::cout << "test 2:" << std::endl;
-    testLinkList();
+    // std::cout << "test 1:" << std::endl;
+    // testSeqList();
+    // std::cout << "test 2:" << std::endl;
+    // testLinkList();
+    std::cout << "test 3:" << std::endl;
+    testStack();
     return 0;
 }
