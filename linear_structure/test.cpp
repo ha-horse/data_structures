@@ -1,5 +1,6 @@
 #include "LinkList.hpp"
 #include "Stack.hpp"
+#include "Queue.hpp"
 
 void testSeqList(){
     LinearList<int> list(5);
@@ -81,6 +82,27 @@ void testStack()  {
     std::cout << "----------------" << std::endl;
 }
 
+void testQueue()  {
+    Queue<int> int_queue;
+    int_queue.enqueue(10);
+    int_queue.enqueue(19);
+    printQueue(int_queue);
+    std::cout << "----------------" << std::endl;
+    int_queue.dequeue();
+    printQueue(int_queue);
+    std::cout << "----------------" << std::endl;
+
+    Queue<float> fload_queue;
+    fload_queue.enqueue(10.1);
+    fload_queue.enqueue(19.2);
+    printQueue(fload_queue);
+    std::cout << "----------------" << std::endl;
+    fload_queue.dequeue();
+    printQueue(fload_queue);
+    std::cout << "----------------" << std::endl;
+}
+
+
 int main(){
     // std::cout << "test 1:" << std::endl;
     // testSeqList();
@@ -88,5 +110,7 @@ int main(){
     // testLinkList();
     std::cout << "test 3:" << std::endl;
     testStack();
+    std::cout << "test 4:" << std::endl;
+    testQueue();
     return 0;
 }

@@ -5,6 +5,7 @@
 // 而不是传统的将声明和定义分别放在头文件（.h或.hpp）和源文件（.cpp）中。
 // 这是因为模板需要在编译时实例化，而编译器在处理源文件时无法访问不在同一翻译单元的模板定义。
 
+#pragma once
 //===================================================
 //顺序存储线性表
 //===================================================
@@ -27,7 +28,7 @@ public:
     //在线性表索引为i的后插入新元素x
     bool insert(const T& x, int i);
     //删除线性表值为x的元素
-    bool remove(T x);
+    bool remove(T x, bool once = false);
     //修改线性表索引为i的元素为x
     bool modify(T x, int i);
     // 获取线性表的长度
@@ -96,20 +97,38 @@ bool LinearList<T>::insert(const T& x, int index){
 }
 
 template <typename T>
-bool LinearList<T>::remove(T x){
+bool LinearList<T>::remove(T x, bool once){
     if (size == 0)
     {
         return false;
     }
-
-    for (int  i = size - 1; i >= 0; i--)
+    
+    if (once)
     {
-        if (x == buffer[i]) {
-            for (int j = i; j < size - 1; j++)
-            {
-                buffer[j] = buffer[j+1];
+        for (int i = 0; i < size; i++)
+        {
+            if (x == buffer[i]) {
+                for (int j = i; j < size - 1; j++)
+                {
+                    buffer[j] = buffer[j+1];
+                }
+                size --;
+                break;
             }
-            size --;
+            
+        }
+        
+    }
+    else {
+        for (int  i = size - 1; i >= 0; i--)
+        {
+            if (x == buffer[i]) {
+                for (int j = i; j < size - 1; j++)
+                {
+                    buffer[j] = buffer[j+1];
+                }
+                size --;
+            }
         }
     }
     return true;
