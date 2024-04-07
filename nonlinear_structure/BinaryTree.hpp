@@ -69,6 +69,15 @@ template<class T>
 int BinaryTree<T>::research(T value) const {}
 
 template<class T>
+void BinaryTree<T>::preOrderTraversal() {}
+
+template<class T>
+void BinaryTree<T>::inOrderTraversal() {}
+
+template<class T>
+void BinaryTree<T>::postOrderTraversal() {}
+
+template<class T>
 void BinaryTree<T>::clear(BinaryTreeNode<T>* node) {
     if (node) {
         clear(node->left);
