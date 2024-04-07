@@ -69,13 +69,34 @@ template<class T>
 int BinaryTree<T>::research(T value) const {}
 
 template<class T>
-void BinaryTree<T>::preOrderTraversal() {}
+void BinaryTree<T>::preOrderTraversal() {
+    if (root == nullptr) return;
+    std::cout << root->data << " ";
+    root = root->left;
+    preOrderTraversal()
+    root = root->right;
+    preOrderTraversal()
+}
 
 template<class T>
-void BinaryTree<T>::inOrderTraversal() {}
+void BinaryTree<T>::inOrderTraversal() {
+    if (root == nullptr) return;
+    root = root->left;
+    preOrderTraversal();
+    std::cout << root->data << " ";
+    root = root->right;
+    preOrderTraversal();
+}
 
 template<class T>
-void BinaryTree<T>::postOrderTraversal() {}
+void BinaryTree<T>::postOrderTraversal() {
+    if (root == nullptr) return;
+    root = root->left;
+    preOrderTraversal();
+    root = root->right;
+    preOrderTraversal();
+    std::cout << root->data << " ";
+}
 
 template<class T>
 void BinaryTree<T>::clear(BinaryTreeNode<T>* node) {
