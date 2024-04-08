@@ -103,14 +103,3 @@ void testQueue()  {
 }
 
 
-int main(){
-    // std::cout << "test 1:" << std::endl;
-    // testSeqList();
-    // std::cout << "test 2:" << std::endl;
-    // testLinkList();
-    std::cout << "test 3:" << std::endl;
-    testStack();
-    std::cout << "test 4:" << std::endl;
-    testQueue();
-    return 0;
-}

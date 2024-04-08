@@ -25,8 +25,7 @@ set(LINEAR_LIB linear)
 set(NONLINEAR_LIB nonlinear)
 
 # 可执行程序的名字
-set(APP_NAME_1 linear-test)
-set(APP_NAME_2 nonlinear-test)
+set(APP_NAME_1 test)
 
 # 添加子目录
 add_subdirectory(linear_structure)
