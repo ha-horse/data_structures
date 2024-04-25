@@ -1,9 +1,10 @@
 #include "LinkList.hpp"
-#include "Queue.hpp"
-#include "Stack.hpp"
+#include "SeqList.hpp"
+#include "QueueSeq.hpp"
+#include "StackSeq.hpp"
 
 void testSeqList() {
-  LinearList<int> list(5);
+  seqlist::LinearList<int> list(5);
   list.insert(10, 3);
   printList(list);
   std::cout << "----------------" << std::endl;
@@ -15,7 +16,7 @@ void testSeqList() {
   printList(list);
   std::cout << "----------------" << std::endl;
   std::cout << "----------------" << std::endl;
-  LinearList<float> list_float(5);
+  seqlist::LinearList<float> list_float(5);
   list_float.insert(10.2, 3);
   printList(list_float);
   std::cout << "----------------" << std::endl;
@@ -29,7 +30,7 @@ void testSeqList() {
 }
 
 void testLinkList() {
-  LinkedList<int> link;
+  linklist::LinkedList<int> link;
   link.insert(10);
   link.insert(9);
   printList(link);
@@ -42,7 +43,7 @@ void testLinkList() {
   printList(link);
   std::cout << "----------------" << std::endl;
   std::cout << "----------------" << std::endl;
-  LinkedList<float> link_float;
+  linklist::LinkedList<float> link_float;
   link_float.insert(10.2);
   link_float.insert(9.2);
   printList(link_float);
@@ -57,7 +58,7 @@ void testLinkList() {
 }
 
 void testStack() {
-  Stack<int> int_stack;
+  seqlist::Stack<int> int_stack;
   int_stack.push(10);
   int_stack.push(19);
   printStack(int_stack);
@@ -69,7 +70,7 @@ void testStack() {
   printStack(int_stack);
   std::cout << "----------------" << std::endl;
 
-  Stack<float> fload_stack;
+  seqlist::Stack<float> fload_stack;
   fload_stack.push(10.1);
   fload_stack.push(19.2);
   printStack(fload_stack);
@@ -83,7 +84,7 @@ void testStack() {
 }
 
 void testQueue() {
-  Queue<int> int_queue;
+  seqlist::Queue<int> int_queue;
   int_queue.enqueue(10);
   int_queue.enqueue(19);
   printQueue(int_queue);
@@ -92,7 +93,7 @@ void testQueue() {
   printQueue(int_queue);
   std::cout << "----------------" << std::endl;
 
-  Queue<float> fload_queue;
+  seqlist::Queue<float> fload_queue;
   fload_queue.enqueue(10.1);
   fload_queue.enqueue(19.2);
   printQueue(fload_queue);

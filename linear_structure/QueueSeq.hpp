@@ -1,5 +1,4 @@
 #include "SeqList.hpp"
-#include <cassert>
 #include <iostream>
 
 namespace seqlist {

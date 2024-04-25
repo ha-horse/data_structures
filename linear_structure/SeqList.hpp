@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <cassert>
 
 // 由于模板的编译方式，模板类的成员函数（包括构造和析构函数）通常都是在头文件中定义的，
 // 而不是传统的将声明和定义分别放在头文件（.h或.hpp）和源文件（.cpp）中。
