@@ -16,7 +16,7 @@ private:
   BinaryTreeNode<T> *removeRecursive(BinaryTreeNode<T> *node, T value);
   BinaryTreeNode<T> *minValueNode(BinaryTreeNode<T> *node);
   void modifyRecursive(BinaryTreeNode<T> *node, T value, int i);
-  bool researchRecursive(BinaryTreeNode<T> *node, T value) const;
+  // bool researchRecursive(BinaryTreeNode<T> *node, T value) const;
   void preOrderHelper(BinaryTreeNode<T> *node);
   void inOrderHelper(BinaryTreeNode<T> *node);
   void postOrderHelper(BinaryTreeNode<T> *node);
@@ -29,7 +29,8 @@ public:
   void insert(T value);
   void remove(T value);
   void modify(T value, int i);
-  int research(T value) const;
+  // bool research(T value) const;
+  bool research(T value);
 
   // 二叉树的前序遍历:访问根节点 -> 遍历左子树 -> 遍历右子树
   void preOrderTraversal();
@@ -120,20 +121,35 @@ template <class T> void BinaryTree<T>::modify(T value, int i) {
   modifyRecursive(root, value, i);
 }
 
-template <class T>
-bool BinaryTree<T>::researchRecursive(BinaryTreeNode<T> *node, T value) const {
-  if (node == nullptr) {
-    return false;
-  }
-  if (node->data == value) {
-    return true;
-  }
-  return researchRecursive(node->left, value) ||
-         researchRecursive(node->right, value);
-}
+// template <class T>
+// bool BinaryTree<T>::researchRecursive(BinaryTreeNode<T> *node, T value) const {
+//   if (node == nullptr) {
+//     return false;
+//   }
+//   if (node->data == value) {
+//     return true;
+//   }
+//   return researchRecursive(node->left, value) ||
+//          researchRecursive(node->right, value);
+// }
 
-template <class T> int BinaryTree<T>::research(T value) const {
-  return researchRecursive(root, value);
+// template <class T> bool BinaryTree<T>::research(T value) const {
+//   return researchRecursive(root, value);
+// }
+
+// 上述的代码使用的是递归的方式，而使用递归会导致效率不高。
+// 恰巧这段代码又是尾递归的方式（尾递归就是程序分支的最后，也就是最后要返回的时候才出现递归），
+// 从编译的角度来讲，尾递归都可以用循环的方式去实现。
+// 由于非递归函数的执行效率高，可将“尾递归”函数改为迭代函数。
+template <class T> bool BinaryTree<T>::research(T value) {
+  BinaryTreeNode<T> *node = root;
+  while (node)
+  {
+    if (value > node->data) node = node->right;
+    else if (value < node->data) node = node->left;
+    else return true;    
+  }
+  return false;
 }
 
 template <class T> void BinaryTree<T>::preOrderHelper(BinaryTreeNode<T> *node) {
